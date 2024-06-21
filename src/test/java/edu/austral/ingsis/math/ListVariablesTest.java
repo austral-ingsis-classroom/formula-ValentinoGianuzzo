@@ -4,11 +4,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 
-import java.util.Collections;
-import java.util.List;
-
 import edu.austral.ingsis.math.operaciones.*;
 import edu.austral.ingsis.math.operaciones.Module;
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class ListVariablesTest {
@@ -36,7 +35,8 @@ public class ListVariablesTest {
   public void shouldListVariablesFunction3() {
     List<String> result = Collections.emptyList();
     // Crear la función que representa la expresión (9 / x) * y
-    Function function = new Multiplication(new Division(new Number(9), new Variable("x")), new Variable("y"));
+    Function function =
+        new Multiplication(new Division(new Number(9), new Variable("x")), new Variable("y"));
     result = function.getVariables();
 
     assertThat(result, containsInAnyOrder("x", "y"));
@@ -45,11 +45,9 @@ public class ListVariablesTest {
   /** Case (27 / a) ^ b */
   @Test
   public void shouldListVariablesFunction4() {
-     List<String> result = Collections.emptyList();
-    Function function = new Power(
-            new Division(new Number(27), new Variable("a")),
-            new Variable("b")
-    );
+    List<String> result = Collections.emptyList();
+    Function function =
+        new Power(new Division(new Number(27), new Variable("a")), new Variable("b"));
     result = function.getVariables();
 
     assertThat(result, containsInAnyOrder("a", "b"));
@@ -58,10 +56,8 @@ public class ListVariablesTest {
   /** Case z ^ (1/2) */
   @Test
   public void shouldListVariablesFunction5() {
-     List<String> result = Collections.emptyList();
-    Function function = new Power(
-            new Variable("z"),
-            new Division(new Number(1), new Number(2)));
+    List<String> result = Collections.emptyList();
+    Function function = new Power(new Variable("z"), new Division(new Number(1), new Number(2)));
     result = function.getVariables();
 
     assertThat(result, containsInAnyOrder("z"));
@@ -70,19 +66,18 @@ public class ListVariablesTest {
   /** Case |value| - 8 */
   @Test
   public void shouldListVariablesFunction6() {
-     List<String> result = Collections.emptyList();
+    List<String> result = Collections.emptyList();
     Function function = new Substraction(new Module(new Variable("value")), new Number(8));
-    result = function.getVariables(
-    );
+    result = function.getVariables();
     assertThat(result, containsInAnyOrder("value"));
   }
 
   /** Case |value| - 8 */
   @Test
   public void shouldListVariablesFunction7() {
-     List<String> result = Collections.emptyList();
-     Function function = new Substraction(new Module(new Variable("value")), new Number(8));
-     result = function.getVariables();
+    List<String> result = Collections.emptyList();
+    Function function = new Substraction(new Module(new Variable("value")), new Number(8));
+    result = function.getVariables();
 
     assertThat(result, containsInAnyOrder("value"));
   }
@@ -90,10 +85,10 @@ public class ListVariablesTest {
   /** Case (5 - i) * 8 */
   @Test
   public void shouldListVariablesFunction8() {
-     List<String> result = Collections.emptyList();
-     Function function = new Multiplication(new Substraction(new Number(5), new Variable("i")), new Number(8));
-     result = function.getVariables();
-
+    List<String> result = Collections.emptyList();
+    Function function =
+        new Multiplication(new Substraction(new Number(5), new Variable("i")), new Number(8));
+    result = function.getVariables();
 
     assertThat(result, containsInAnyOrder("i"));
   }
