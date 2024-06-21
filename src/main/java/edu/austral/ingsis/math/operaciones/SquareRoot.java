@@ -10,7 +10,6 @@ public class SquareRoot implements Function {
 
   public SquareRoot(Function number1) {
     this.number1 = number1;
-
   }
 
   @Override
